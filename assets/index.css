@@ -3,7 +3,8 @@
 }
 
 #header {
-    margin-left: 30%;
+    display: flex;
+    justify-content: center;
     font-weight: bold;
     font-size: 1.75em;
     color: #e6e6e6;
