@@ -14,6 +14,13 @@
         <br /><br />
         </p>
 
-        <button onclick="javascript:randomEp();">Generate!</button>    
+        <button onclick="javascript:randomEp();">Generate!</button>
+        <p id="previous">
+        <script>
+            if (localStorage.season && localStorage.episode){
+                document.write("Previous Episode: " + localStorage.getItem("season") + "x" + localStorage.getItem("episode"));
+            }
+        </script>  
+        </p>  
     </div>
 </body>

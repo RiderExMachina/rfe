@@ -11,10 +11,16 @@ function randomSeason(){
 
     return season;
 }
-function randomEp(){
+
+function randomEp() {
+    if (typeof(Storage) !== "undefined") {
+    	hasStorage = true;
+		document.getElementById("previous").innerHTML = "Previous Episode: " + localStorage.getItem("season") + "x" + localStorage.getItem("episode");
+	}
+	else { hasStorage = false; }
 
     randomSeason()
-
+    
     if (twentyFour.includes(season)) {
         episode = Math.round(Math.random() * 24);
     }
@@ -24,11 +30,17 @@ function randomEp(){
     else if (season == 10) {
         episode = Math.round(Math.random() * 18);
     }
-
-    if (episode == 0){
-
+    
+    if (episode == 0 || episode == undefined){
+        randomEp();
     }
     console.log(season);
     console.log(episode);
+
+    if (hasStorage == true) {
+        window.localStorage.setItem("season", season);
+		window.localStorage.setItem("episode", episode);
+    }
+    else { console.log("Storage not supported in this browser.") }
     document.getElementById("episode").innerHTML = "Season: " + season + "<br />Episode: " + episode;
 }
